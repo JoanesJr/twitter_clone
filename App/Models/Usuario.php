@@ -8,6 +8,7 @@ class Usuario extends model {
     private $name;
     private $email;
     private $password;
+    private $image;
 
     public function __set($atr, $value) {
         $this->$atr = $value;
@@ -43,6 +44,32 @@ class Usuario extends model {
         };
 
         return $verify;
+    }
+
+    public function updatePerfil() {
+        if ($this->verifyRegister()) {
+            $query = 
+            "
+                UPDATE 
+                    tb_usuarios
+                SET
+                    name = :name, email = :email, password = :password, image = :image
+                WHERE
+                    id = :id
+            ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id', $this->__get('id'));
+            $stmt->bindValue(':name', $this->__get('name'));
+            $stmt->bindValue(':email', $this->__get('email'));
+            $stmt->bindValue(':password', $this->__get('password'));
+            $stmt->bindValue(':image', $this->__get('image'));
+            $stmt->execute();
+    
+            header('Location: /perfil?erro=false');
+        } else {
+            header('Location: /perfil?erro=true');
+        }
+        
     }
 
     public function recoveryRegister() {
@@ -151,5 +178,20 @@ class Usuario extends model {
         $stmt->execute();
 
         return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function getUser() {
+        $query =
+        "
+            SELECT * FROM tb_usuarios WHERE id = :id
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id', $this->__get('id'));
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+
+
     }
 }

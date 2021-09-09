@@ -88,6 +88,21 @@ h2 {
 
 }
 
+.img-perfil {
+    max-height: 350px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-thumb {
+    max-height: 80px;
+    min-height: 80px;
+    max-width: 100px;
+    min-width: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
 .menuIco {
     width: 31px;
     height: 23px;

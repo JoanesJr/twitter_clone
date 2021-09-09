@@ -32,7 +32,7 @@ class Tweet extends model {
     public function getAll() {
         $query = "
             SELECT 
-                t.id, t.id_usuario, t.tweet, u.name, DATE_FORMAT(t.data, '%d/%m/%Y %H:%i') as data
+                t.id, t.id_usuario, t.tweet, u.name, u.image,DATE_FORMAT(t.data, '%d/%m/%Y %H:%i') as data
             FROM 
                 tb_tweets AS t
                 LEFT JOIN tb_usuarios as u on (t.id_usuario = u.id)

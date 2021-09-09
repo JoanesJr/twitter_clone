@@ -68,6 +68,18 @@ class Route extends Bootstrap {
 			'action' => 'deleteTweet'
 		);
 
+		$routes['perfil'] = array(
+			'route' => '/perfil',
+			'controller' => 'PerfilController',
+			'action' => 'index'
+		);
+
+		$routes['alterarperfil'] = array(
+			'route' => '/alterarperfil',
+			'controller' => 'PerfilController',
+			'action' => 'alterarPerfil'
+		);
+
 		$this->setRoutes($routes);
 	}
 

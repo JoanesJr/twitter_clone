@@ -80,7 +80,12 @@ class AppController extends Action {
 
         $this->view->users = $users_search;
 
-        $this->render('quemseguir');
+        if (isset($_GET['procurarpor'])) {
+            return true;
+        } else {
+            $this->render('quemseguir');
+        }
+        
     }
 
     public function action() {

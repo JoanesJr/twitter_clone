@@ -9,6 +9,10 @@
 	  		Sair
 	  	</a>
 			<img src="/img/twitter_logo.png" class="menuIco" />
+
+		<a href="/perfil" class="menuItem">
+			Perfil
+		</a>
 	  </div>
 	</div>
 </nav>
@@ -69,11 +73,15 @@
 				</div>
 			</div>
 
-			<?php foreach($this->view->tweets as $tweet) {?>
+			<?php foreach($this->view->tweets as $tweet) { ?>
 				<div class="row tweet">
 					<div class="col">
-						<p><strong><?= $tweet->name ?></strong> <small><span class="text text-muted"><?= $tweet->data ?></span></small></p>
-						<p><?= $tweet->tweet ?></p>
+						<div class="d-inline">
+							<img src="img_perfil/<?= $tweet->image ?>" class="img-thumb img-thumbnail d-inline" alt="">
+							<p class="d-inline ms-auto"><strong><?= $tweet->name ?></strong> <small><span class="text text-muted"><?= $tweet->data ?></span></small></p>
+						</div>
+						
+						<p class="mt-3"><?= $tweet->tweet ?></p>
 
 						<br />
 						<?php if ($tweet->id_usuario == $_SESSION['id']) { ?>
